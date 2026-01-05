@@ -1,6 +1,8 @@
-from pyscript import document
+from pyscript import document, display
 
 def calculate(e):
+    output_summary2 = document.getElementById("output2")
+    output_summary2.innerHTML = ""
     output_summary = document.getElementById("output")
     output_summary.innerHTML = ""
     
@@ -26,7 +28,12 @@ def calculate(e):
     Math: {subject4}\n
     Filipino: {subject5}\n
     PE: {subject6}\n
-    Your General Weighted Average (GWA) is: {round(GWA, 2)}"""
+    Your General Weighted Average (GWA) is: {round(GWA, 2)}"""  
     
     output_summary.innerText = final_message
+    
+    if GWA < 75:
+        display(f'{firstName} {lastName} is below the passing grade.', target='output2')
+    else:
+        display(f'{firstName} {lastName} is passing.', target='output2')
     
